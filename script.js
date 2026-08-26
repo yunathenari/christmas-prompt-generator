@@ -1,330 +1,648 @@
+/* -----------------------------------------------
+    DESIGNING VARIABLES
+    ---------------------------------------------- */
+
+
+    * {box-sizing: border-box;}
+
+:root {
+    --night: #441f1f;
+    --font-display: "Cormorant Garamond", serif;
+    --font-body: "Jost", sans-serif;
+    --gold: #bc9b5e;
+    --gold-light: #f0c975;
+    --berry: #b23a45;
+    --cream:#f4ecd8;
+    --holly: #3a7a5c;
+    --holly-shade: #2c5f47;
+
+}
+
+
+
+/* ----------------------------------
+    MOBILE
+    --------------------------------- */
+
+@media (max-width: 480px) {
+    .app {
+        width: 92%;
+        padding: 32px 18px 24px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+
+    .ornaments {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ornament { 
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+}
+
+    .player {
+        width: 170px;
+    }
+}
+
+
+
+
+/* -------------------------------
+    PROMPT SPACE
+    ------------------------------ */
+
+.prompt-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.prompt-container p {
+    margin: 0;
+}
+
+/* -------------------------------
+    COPY BUTTON
+    ------------------------------ */
+
+.copy-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.copy-btn:hover {
+    transform: scale(1.15);
+    background: rgba(188, 155, 94, 0.2);
+}
+
+.copy-btn.copied {
+    font-size: 17px;
+    font-family: var(--font-body);
+    text-transform: lowercase;
+    transform: scale(0.9);
+}
+
+/* ----------------------------------
+    WELCOME PAGE
+    --------------------------------- */
+
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 31, 26, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+}
+
+.welcome-overlay.is-visible {
+    display: flex;
+}
+
+.welcome-bg {
+    background-image: url('images/jolly.png'), linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
+    background-size: cover, cover;
+    background-blend-mode: soft-light;
+    border: 1px solid rgba(122, 92, 42, 0.35);
+    border-radius: 18px;
+    padding: 32px 28px;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
+}
+
+
+.welcome-h2 {
+    margin-top: 0;
+}
+
+.welcome-p {
+    color: #6b5a3d;
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+}
+
+
+
+/* ----------------------------------
+    PAGE BACKGROUND & TEXT
+    --------------------------------- */
+
+.corner-sticker {
+    position: absolute;
+    bottom: -85px;
+    left: -85px;
+    width: 200px;
+    height: auto;
+    pointer-events: none;
+}
+
+h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: #3a1010;
+    font-size: 50px;
+}
+
+h2 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a9762e;
+}
+
+
+
+
+body {
+    background: linear-gradient(rgba(94, 84, 84, 0.55), rgba(8, 16, 14, 0.825)),
+    url('images/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    cursor: url('images/cursor.png') 4 4, auto;
+
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-family: var(--font-body);
+}
+
+button, a, 
+.chip, .credits-wrapper, 
+.now-playing, .song-item, 
+.copy-btn, .player-btn {
+
+    cursor: url('images/cursor.png') 4 4, pointer !important;
+
+}
+
+
+.message {
+    margin: 0 0 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a9762e;
+}
+
+.subtitle {
+    margin: 0 0 32px;
+    max-width: 360px;
+    color: #6b5a3d;
+    font-size: 16px;
+    line-height: 1.55;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* -------------------------------
+    CHIPS
+    ------------------------------ */
+.chip,
+#result-genre-label {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+
+.chip {
+    background: var(--holly);
+    color: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin: 5px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+}
+
+.chip:hover {
+    background: var(--holly-shade);
+    transform: translateY(-2px);
+}
+
+/* -------------------------------
+    SNOW
+    ------------------------------ */
+
+#snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
 
 /* -------------------------------
     BUTTONS
     ------------------------------ */
 
-const btnStart = document.getElementById('btn-start');
-const stepStart = document.getElementById('step-start');
-const stepGenre = document.getElementById('step-genre');
-const btnTryAgain = document.getElementById('btn-try-again');
-const btnStartOver = document.getElementById('btn-start-over');
-const state = {prompts: {}, selectedGenre: null,};
+.btn {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    padding: 15px 40px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, 
+    background 0.18s ease, opacity 0.18s ease;}
 
 
-btnStart.addEventListener('click', () => {
-    stepStart.classList.remove('is-active');
-    stepGenre.classList.add('is-active');
-});
-
-btnTryAgain.addEventListener('click', () => {
-    generateResult();
-});
-
-btnStartOver.addEventListener('click', () => {
-    state.selectedGenre = null;
-    document.getElementById('step-results').classList.remove('is-active');
-    stepStart.classList.add('is-active');
-});
-
-/* -------------------------------
-    COPY TO CLIPBOARD (HELP MY NECK IS IN PAINNNNNNNN)
-    ------------------------------ */
-
-const btnCopy = document.getElementById('btn-copy');
-
-btnCopy.addEventListener('click', async () => {
-    const promptText = document.getElementById('result-prompt').textContent;
-
-    if (!promptText || promptText === 'prompt goes here') return;
-
-    try {
-        await navigator.clipboard.writeText(promptText);
-
-        btnCopy.textContent = '✓ Copied';
-        btnCopy.classList.add('copied');
-
-        setTimeout(() => {
-            btnCopy.textContent = '📋';
-            btnCopy.classList.remove('copied')
-        }, 1500);
-    } catch (err) {
-        console.error('Failed to copy text:', err);
-    }
-});
-
-
-/* -------------------------------
-    WELCOME SIGN
-    ------------------------------ */
-(function welcomeSign() {
-    const overlay = document.getElementById('welcome-overlay');
-    const closeBtn = document.getElementById('welcome-close');
-    const hasVistedOnce = localStorage.getItem('hasVisited');
-
-    if (!hasVistedOnce) {
-        overlay.classList.add('is-visible');
-    }
-
-    closeBtn.addEventListener('click', () => {
-        overlay.classList.remove('is-visible');
-        localStorage.setItem('hasVisited', 'true');
-    });
-})();
-
-
-
-
-/* -------------------------------
-    SNOW
-    ------------------------------ */
-(function snow() {
-    const canvas = document.getElementById('snow-canvas');
-    const context = canvas.getContext('2d')
-    let flakes = [];
-    let width, height;
-
-    function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    }
-
-    function makeFlakes() {
-        const count = 60;
-        flakes = Array.from({length: count}, () => {
-            const isFar = Math.random() < 0.5;
-            return {
-            x: Math.random() * width,
-            y: Math.random() * height,
-            r: isFar ?  Math.random() * 1 + 0.4 : Math.random() * 2.4 + 1.4,
-            speed: isFar ? Math.random() * 0.6 + 0.25 : Math.random() * 0.6 + 0.5,
-            opacity: isFar ? Math.random() * 0.3 + 0.15 : Math.random() * 0.4 + 0.5,
-            };
-        });
-    }
-
-    function tick() {
-        context.clearRect(0, 0, width, height);
-        context.fillStyle = '#f4ecd8';
-        flakes.forEach((f) => {
-            context.beginPath();
-            context.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-            context.fill();
-            f.y += f.speed;
-            if (f.y > height) {
-                f.y = -4;
-                f.x = Math.random() * width;
-            }
-        });
-        requestAnimationFrame(tick);
-    }
-
-    resize();
-    makeFlakes();
-    window.addEventListener('resize', () => {
-        resize();
-        makeFlakes();
-    });
-    requestAnimationFrame(tick);
-})();
-
-
-
-/* -------------------------------
-    DATA AND GENRES
-    ------------------------------ */
-
-
-function renderGenre(prompts) {
-    const genreList = document.getElementById('genre-list'); 
-    const genres = Object.keys(prompts);
-
-    const htmlInput = genres
-                .map((genre) => `<button class="chip" data-genre="${genre}">${genre}</button>`)
-                .join('');
-
-    genreList.innerHTML = htmlInput
-
-    const chipButtons = genreList.querySelectorAll('.chip');
-        chipButtons.forEach((chip) => {
-        chip.addEventListener('click', () => {
-            state.selectedGenre = chip.dataset.genre;
-            generateResult();
-            stepGenre.classList.remove('is-active');
-            document.getElementById('step-results').classList.add('is-active');
-    });
-});
+.btn-main {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    color: #24160a;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 12px 26px -10px rgba(212, 175, 106, 0.65);
 }
 
-function pickRandom(array) {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    return array[randomIndex]
+.btn-main:hover {
+    transform: translateY(-2px);
+    border-color: #f7d69d;
+    box-shadow: 0 16px 30px -10px rgba(212, 175, 106, 0.8);
+}
+
+.btn-second {
+    background: var(--berry);
+    color: var(--cream);
+    box-shadow: 0 12px 26px -12px rgba(178, 58, 69, 0.7);
+}
+
+.btn-second:hover {
+    transform: translateY(-2px);
+}
+
+.btn-leave{
+    background: repeating-radial-gradient(
+        circle at 2px 2px,
+        rgba(255, 255, 255, 0.12) 0px,
+        rgba(255, 255, 255, 0.12) 1.5px,
+        transparent 1.5px,
+        transparent 12px
+    ), var(--holly);
+    color: var(--cream);
+    background-clip: padding-box;
+    box-shadow: 0 10px 22px -10px rgba(58, 122, 92, 0.6);
+}
+
+.btn-leave:hover {
+    background: repeating-radial-gradient(
+        circle at 2px 2px,
+        rgba(255, 255, 255, 0.18) 0px,
+        rgba(255, 255, 255, 0.18) 1.5px,
+        transparent 1.5px,
+        transparent 12px
+    ), var(--holly-shade);
+    background-clip: padding-box;
+    transform: translateY(-2px);
+}
+
+/* -------------------------------
+    Hide and Show mechanics
+    ------------------------------ */
+
+
+.step {
+    display: none;
+}
+
+.step.is-active {
+    display: block;
+    animation: fadeUp 0.55s ease both;
+
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------
+    CREDITS
+    ------------------------------- */
+
+.credits-wrapper {
+    position: relative;
+    display: block;
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.credits-panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 4px;
+    width: 200px;
+    background: var(--cream);
+    border: 1px solid var(--cream);
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 16px 30px -12px rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    color: #4b5b52;
+    z-index: 10;
+
+    user-select: text;
+    -webkit-user-select: text;
+    text-align: center;
+}
+
+.credits-wrapper:hover .credits-panel {
+    display: block;
+}
+
+#result-author {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b5a3d;
+    margin-top: -10px;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+/* -----------------------------------
+    HANGING ROPE
+    ---------------------------------- */
+
+.hanging-rope {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    animation: sway 8s ease-in-out infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+
+}
+
+@keyframes sway {
+    0%, 100% {transform: rotate(-1deg);}
+    50% {transform: rotate(1deg);}
 }
 
 
-async function loadData() {
+/* -------------- THE ACTUAL ROPE ------------- */
 
-    const response = await fetch('prompts.json')
-    state.prompts = await response.json();
+.rope {
+    width: 240px;
+    bottom: -15.5px;
+    left: 2px;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 5;
+    margin-bottom: -15.5px;
+    will-change: transform;
+    backface-visibility: hidden;
 
-    renderGenre(state.prompts)
 }
 
-loadData();
+/* ----------------------------------
+    ORNAMENT BUTTONS (So close to forgetting this bit)
+    --------------------------------- */
 
-function generateResult() {
-    const promptsForGenre = state.prompts[state.selectedGenre];
-    const authors = Object.keys(promptsForGenre);
-    const chosenAuthor = pickRandom(authors);
+.chip {
+    position: relative;
+    margin-top: 12px;
+    overflow: visible;
+}
 
-    const prompts = promptsForGenre[chosenAuthor];
-    const chosenPrompt = pickRandom(prompts);
+.chip::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 2px 2px 0 0;
+}
 
+.chip::after {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: var(--gold-light);
+    border-radius: 50%;
+}
+
+
+/* ------------------------------------
+    THE CARD
+    ----------------------------------- */
     
-    const resultedPrompt = document.getElementById('result-prompt');
-    const resultedAuthor = document.getElementById('result-author');
-    const chosenGenre = document.getElementById('result-genre-label');
-
-    chosenGenre.textContent = state.selectedGenre;
-    resultedPrompt.textContent = chosenPrompt;
-    resultedAuthor.textContent =  `By ${chosenAuthor}`;
+.app {
+    position: relative;
+    bottom: 50px;
+    background: linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
+    border: 1px solid rgba(122, 92, 42, 0.35);
+    border-radius: 22px;
+    padding: 48px 40px 40px;
+    width: 90%;
+    max-width: 560px;
+    min-height: 200px;
+    text-align: center;
+    box-shadow: 
+    0 30px 60px -25px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    z-index: 0;
 }
 
 
-
+.punched-hole {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--night);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.4);
+    z-index: 4;
+}
 
 /* ----------------------------------
     MUSIC PLAYER
     --------------------------------- */
 
-(function musicPlayer() {
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    const prevBtn = document.getElementById('btn-prev');
-    const nextBtn = document.getElementById('btn-next');
-    const playlist1 = document.getElementById('playlist');
-    const audio = document.getElementById('audio-player');
-    const nowPlayingBtn = document.getElementById('now-playing-btn')
 
-    let songs = [];
-    let current = null;
-
-    async function loadSongs() {
-
-
-        try {
-            const response = await fetch('songs.json')
-            songs = await response.json();
-            renderPlaylist();
-            
-
-        } catch (e) {
-            console.error("Failed to load songs.json", e)
-        }
-    }
-
-    function renderPlaylist() {
-        playlist1.innerHTML = songs
-            .map((song, index) => `<button class="song-item" data-index="${index}">${song.title}</button>`)
-            .join('')
-
-        playlist1.querySelectorAll('.song-item').forEach((btn) => {
-            btn.addEventListener('click', () => playSong(Number(btn.dataset.index)));
-        });
-    }
-
-    function playSong(index) {
-        if (songs.length === 0) return;
-        current = index;
-        audio.src = songs[index].file;
-        audio.play().catch(err => console.log("Autoplay prevented:", err));
-        playPauseBtn.textContent = '⏸'
-        updatePlaying();
-        updateNowPlaying(songs[index].title);
-    }
-
-    function playNext() {
-        if (current === null) {
-            playSong(0);
-        } else {
-            const nextIndex = (current + 1) % songs.length;
-            playSong(nextIndex)
-        }
-    }
+.now-playing {
+    width: 220px;
+    height: 50px;
+    border-radius: 12px;
+    border: 1px solid rgba(122, 92, 42, 0.35);
+    background: linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
+    box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
 
 
-    function playPrev() {
-        if (current === null) {
-            playSong(songs.length - 1);
-        } else {
-            const prevIndex = (current - 1 + songs.length) % songs.length;
-            playSong(prevIndex);
-        }
-    }
+.now-playing-mask {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.now-playing-track {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5b52;
+    letter-spacing: 0.02em;
+}
+
+.now-playing-track.is-scrolling {
+    animation: marquee 8s linear infinite;
+}
 
 
+@keyframes marquee {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-50%);}
+    
+}
 
 
-    function updateNowPlaying(title) {
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: #4b5b52;
+}
 
-        const track1 = document.getElementById('now-playing-track');
-        const mask1 = track1.parentElement;
+.song-item::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
 
-        track1.classList.remove('is-scrolling');
-        track1.textContent = `Now Playing: ${title}`;
+.song-item:hover {
+    background: rgba(58, 122, 92, 0.15);
+}
 
-        const isOverflowing = track1.scrollWidth > mask1.clientWidth;
+.song-item.is-playing {
+    font-weight: 600;
+    color: var(--berry);
+}
 
-        if (isOverflowing) {
-            track1.textContent = `Now Playing: ${title}     •     Now Playing: ${title}`;
-            track1.classList.add('is-scrolling');
-        }
+.song-item.is-playing::before {
+    background: var(--berry);
+}
 
-    }
 
-    function updatePlaying() {
+.player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
 
-        playlist1.querySelectorAll('.song-item').forEach((btn, i) => {
-            btn.classList.toggle('is-playing', i === current);
-        });
+.player-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
 
-    }
 
-    playPauseBtn.addEventListener('click', () => {
-        if (current === null) {
-            playlist1.classList.toggle('is-open');
-            return;
-        }
-        if (audio.paused) {
-            audio.play();
-            playPauseBtn.textContent = '⏸' 
-        } else {
-            audio.pause();
-            playPauseBtn.textContent = '▶'
-        }
-    });
+.player-btn {
+    background: none;
+    border: none;
+    color: #db6c6c;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
 
-    nextBtn.addEventListener('click', playNext);
-    prevBtn.addEventListener('click', playPrev);
 
-    nowPlayingBtn.addEventListener('click', () => {
-        playlist1.classList.toggle('is-open');
-    });
+.player-btn:hover {
+    transform: scale(1.5);
+    opacity: 0.85;
+}
 
-    audio.addEventListener('ended', playNext);
 
-    loadSongs();
+.playlist {
+    display: none;
+    flex-direction: column;
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 4px;
+    max-width: 220px;
+}
 
-    const welcomeCloseBtn = document.getElementById('welcome-close')
+.playlist.is-open {
+    display: flex;
+}
 
-    btnStart.addEventListener('click', () => {
-        if (current === null) {
-            playSong(0);
-        }
-    })
 
-        welcomeCloseBtn.addEventListener('click', () => {
-        if (current === null) {
-            playSong(0);
-        }
-});
-
-})();
