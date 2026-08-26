@@ -24,7 +24,7 @@
     MOBILE
     --------------------------------- */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .app {
         width: 92%;
         padding: 36px 24px 28px;
