@@ -25,28 +25,45 @@
     --------------------------------- */
 
 @media (max-width: 600px) {
+
     .app {
         width: 92%;
-        padding: 36px 24px 28px;
+        padding: 32px 18px 24px;
     }
 
     h1 {
         font-size: 32px;
     }
 
-
     .ornaments {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .ornament { width: 100%;
-    height: auto;
-    aspect-ratio: 1/1;
-}
+    .ornament { 
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+    }
 
-    .player {
+    .now-playing {
         width: 170px;
     }
+
+    .rope {
+        width: 130px;
+    }
+
+    .corner-sticker {
+        width: 100px;
+        bottom: -35px;
+        left: -35px;
+    }
+
+
+
+
+
+
 }
 
 
@@ -481,7 +498,7 @@ button, a,
     border: 1px solid rgba(122, 92, 42, 0.35);
     border-radius: 22px;
     padding: 48px 40px 40px;
-    width: 500px;
+    width: 90%;
     max-width: 560px;
     min-height: 200px;
     text-align: center;
