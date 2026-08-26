@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Christmas Prompt Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="welcome-overlay" id="welcome-overlay">
+    <div class="welcome-bg">
+        <h2>Welcome to the elf workshop!</h2>
+        <p>Click start and pick a genre of your choice and we'll gift you a random writing prompt. <br> <br> Hit "Try Again" for a new one, or "Start Over" to pick a different genre! <br> <br> And enjoy please yourself with a plentiful selection of holly jolly Christmas tunes!</p>
+        <button id="welcome-close" class="btn btn-main">Let's Start</button>
+        </div>
+    </div>
+    <canvas id="snow-canvas"></canvas>
+    <div class="hanging-rope">
+        <span class="rope-knot"></span>
+        <img src="images/rope.png" class="rope">
+        <main class="app">
+            <div class="punched-hole"></div>
+            <img src="images/sticker.png" class="corner-sticker">
+
+
+    <section id="step-start" class="step is-active">
+        <p class="message">A Christmas Gift From Me To You</p>
+    <h1>Elf Workshop</h1>
+    <p class="subtitle">One spark of light, creates your inspiration. Awaiting you is a gift of creation.</p>
+    <button id="btn-start" class="btn btn-main">Open Up</button>
+    <div class="credits-wrapper">
+        <span class="info-icon">Credits ⓘ</span>
+        <div class="credits-panel">
+            <p id="text"><strong>Prompts Written By:</strong></p>
+            <p>@creativepromptsforwriting, @castielscaplan, @diremoone, @mirclealignr, @novelbear, @urfriendlywriter</p>
+            <p></p>
+        </div>
+    </div>
+    </section>
+    <section id="step-genre" class="step">
+    <h2>Decide your story</h2>
+    <div id="genre-list"></div>
+    </section>
+
+    <section id="step-results" class="step">
+        <h2 id="result-genre-label">Genre</h2>
+        <div class="prompt-container">
+            <p id="result-prompt">prompt goes here</p>
+            <button id="btn-copy" class="copy-btn" title="Copy prompt">📋</button>
+        </div>
+        <p id="result-author">by @writer</p>
+        <button id="btn-try-again" class="btn btn-second">Try Again</button>
+        <button id="btn-start-over" class="btn btn-leave">Start Over</button>
+    </section>
+
+        </main>
+    </div>
+
+    <div class="player">
+        <div class="player-controls">
+            <button id="btn-prev" class="player-btn">⏮</button>
+            <button id="play-pause-btn" class="player-btn">▶</button>
+            <button id="btn-next" class="player-btn">⏭</button>
+        </div>
+        <button id="now-playing-btn" class="now-playing">
+            <span class="now-playing-mask">
+                <span class="now-playing-track" id="now-playing-track">Now Playing: -</span>
+            </span>
+        </button>
+        <div class="playlist" id="playlist"></div>
+        <audio id="audio-player"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
