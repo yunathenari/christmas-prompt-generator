@@ -120,9 +120,9 @@
 
 h1 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 800;
     color: #3a1010;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 h2 {
