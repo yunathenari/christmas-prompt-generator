@@ -295,7 +295,7 @@ function generateResult() {
         }
         if (audio.paused) {
             audio.play();
-            playPauseBtn.textContent = '⏸' 
+            playPauseBtn.textContent = '❚❚' 
         } else {
             audio.pause();
             playPauseBtn.textContent = '▶'
