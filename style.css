@@ -18,6 +18,40 @@
 
 }
 
+
+
+/* ----------------------------------
+    MOBILE
+    --------------------------------- */
+
+@media (max-width: 480px) {
+    .app {
+        width: 92%;
+        padding: 36px 24px 28px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+
+    .ornaments {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ornament { width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+    .player {
+        width: 170px;
+    }
+}
+
+
+
+
 /* -------------------------------
     PROMPT SPACE
     ------------------------------ */
@@ -401,6 +435,40 @@ button, a,
 
 }
 
+/* ----------------------------------
+    ORNAMENT BUTTONS (So close to forgetting this bit)
+    --------------------------------- */
+
+.chip {
+    position: relative;
+    margin-top: 12px;
+    overflow: visible;
+}
+
+.chip::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 2px 2px 0 0;
+}
+
+.chip::after {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: var(--gold-light);
+    border-radius: 50%;
+}
+
 
 /* ------------------------------------
     THE CARD
@@ -576,24 +644,4 @@ button, a,
     display: flex;
 }
 
-.song-item {
-    background: none;
-    border: none;
-    text-align: left;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 13px;
-    color: #4b5b52;
-}
-
-.song-time:hover {
-    background: rgba(58, 122, 92, 0.15);
-}
-
-.song-item.is-playing {
-    font-weight: 700;
-    color: var(--berry);
-}
 
