@@ -211,7 +211,7 @@ button, a,
 .now-playing, .song-item, 
 .copy-btn, .player-btn {
 
-    cursor: url('images/cursor.png') 4 4, pointer !important;
+    cursor: url('images/holi-cursor.png') 4 4, pointer !important;
 
 }
 
