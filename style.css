@@ -195,7 +195,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    cursor: url('images/cursor.png') 4 4, auto;
+    cursor: url('images/holi-cursor.png') 4 4, auto;
 
     min-height: 100vh;
     margin: 0;
