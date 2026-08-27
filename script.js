@@ -236,7 +236,7 @@ function generateResult() {
         current = index;
         audio.src = songs[index].file;
         audio.play().catch(err => console.log("Autoplay prevented:", err));
-        playPauseBtn.textContent = '⏸'
+        playPauseBtn.textContent = '❚❚'
         updatePlaying();
         updateNowPlaying(songs[index].title);
     }
