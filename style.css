@@ -69,6 +69,15 @@
 
 }
 
+@media (min-width: 601px) {
+    .app {
+        width:auto;
+        min-width: 480px;
+        max-width: 640px;
+    }
+    
+}
+
 
 /* -------------------------------
     PROMPT SPACE
@@ -195,7 +204,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    cursor: url('images/holi-cursor.png') 4 4, auto;
+    cursor: url('images/cursor.png') 4 4, auto;
 
     min-height: 100vh;
     margin: 0;
@@ -211,7 +220,7 @@ button, a,
 .now-playing, .song-item, 
 .copy-btn, .player-btn {
 
-    cursor: url('images/holi-cursor.png') 4 4, pointer !important;
+    cursor: url('images/cursor.png') 4 4, pointer !important;
 
 }
 
