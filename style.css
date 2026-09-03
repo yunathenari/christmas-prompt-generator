@@ -43,15 +43,6 @@
         font-size: 32px;
     }
 
-    .ornaments {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .ornament { 
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1/1;
-    }
 
     .now-playing {
         width: 170px;
@@ -84,30 +75,34 @@
     ------------------------------ */
 
 .prompt-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin: 16px 0;
+    position: relative;
+    display: block;
+    margin: 10px 0 16px;
+    padding-top: 4px;
 }
 
 .prompt-container p {
     margin: 0;
 }
 
+
 /* -------------------------------
     COPY BUTTON
     ------------------------------ */
 
 .copy-btn {
+    position: absolute;
+    top: -55px;
+    right: 65px;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
     padding: 6px;
     border-radius: 6px;
     transition: transform 0.15s ease, background 0.15s ease;
 }
+
 
 .copy-btn:hover {
     transform: scale(1.15);
@@ -115,7 +110,7 @@
 }
 
 .copy-btn.copied {
-    font-size: 17px;
+    font-size: 20px;
     font-family: var(--font-body);
     text-transform: lowercase;
     transform: scale(0.9);
@@ -151,19 +146,6 @@
     text-align: center;
     box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
 }
-
-
-.welcome-h2 {
-    margin-top: 0;
-}
-
-.welcome-p {
-    color: #6b5a3d;
-    font-size: 15px;
-    line-height: 1.55;
-    margin-bottom: 24px;
-}
-
 
 
 /* ----------------------------------
@@ -212,6 +194,9 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 500;
+    line-height: 1.55;
+    color: #752a2a;
+    
     font-family: var(--font-body);
 }
 
@@ -366,7 +351,7 @@ button, a,
 
 .step.is-active {
     display: block;
-    animation: fadeUp 0.55s ease both;
+    animation: fadeUp 0.4s ease both;
 
 }
 
@@ -396,11 +381,11 @@ button, a,
     left: 50%;
     transform: translateX(-50%);
     margin-top: 4px;
-    width: 200px;
+    width: 250px;
     background: var(--cream);
     border: 1px solid var(--cream);
     border-radius: 10px;
-    padding: 14px 16px;
+    padding: 16px 18px;
     box-shadow: 0 16px 30px -12px rgba(0, 0, 0, 0.5);
     font-size: 14px;
     color: #4b5b52;
@@ -418,7 +403,7 @@ button, a,
 #result-author {
     font-family: var(--font-body);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     color: #6b5a3d;
     margin-top: -10px;
     margin-bottom: 24px;
@@ -466,34 +451,57 @@ button, a,
     ORNAMENT BUTTONS (So close to forgetting this bit)
     --------------------------------- */
 
+
+#genre-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, auto);
+    gap: 16px;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    margin: 20px auto 0;
+}
+
+
+
 .chip {
-    position: relative;
-    margin-top: 12px;
-    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100px;
+    padding: 12px 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.chip::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 5px;
-    background: var(--gold);
-    border-radius: 2px 2px 0 0;
+.chip:hover {
+    transform: translateY(-4px) scale(1.04);
+    background: transparent;
 }
 
-.chip::after {
-    content: "";
-    position: absolute;
-    top: -9px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 5px;
-    height: 5px;
-    background: var(--gold-light);
-    border-radius: 50%;
+.chip-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+
+
+.chip-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--berry);
+    text-align: center;
+    line-height: 1.2;
 }
 
 
