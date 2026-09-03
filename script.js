@@ -1,4 +1,3 @@
-
 /* -------------------------------
     BUTTONS
     ------------------------------ */
@@ -44,7 +43,7 @@ btnCopy.addEventListener('click', async () => {
         btnCopy.classList.add('copied');
 
         setTimeout(() => {
-            btnCopy.textContent = '📋';
+            btnCopy.textContent = '🗎';
             btnCopy.classList.remove('copied')
         }, 1500);
     } catch (err) {
@@ -133,13 +132,29 @@ btnCopy.addEventListener('click', async () => {
     DATA AND GENRES
     ------------------------------ */
 
+const genreimages = {
+    "Angst": "images/angst.png",
+    "Fluff": "images/fluff.png",
+    "Smut": "images/smut.png",
+    "Hurt/Comfort": "images/hurt-comfort.png",
+};
+
+
+
 
 function renderGenre(prompts) {
     const genreList = document.getElementById('genre-list'); 
     const genres = Object.keys(prompts);
 
+
     const htmlInput = genres
-                .map((genre) => `<button class="chip" data-genre="${genre}">${genre}</button>`)
+            .map((genre) => {
+                return`
+                    <button class="chip" data-genre="${genre}">
+                        <img src="${genreimages[genre]}" class="chip-icon">
+                        <span class="chip-label">${genre}</span>             
+                    </button>`;
+            })
                 .join('');
 
     genreList.innerHTML = htmlInput
@@ -162,7 +177,6 @@ function pickRandom(array) {
 
 
 async function loadData() {
-
     const response = await fetch('prompts.json')
     state.prompts = await response.json();
 
@@ -188,6 +202,8 @@ function generateResult() {
     resultedPrompt.textContent = chosenPrompt;
     resultedAuthor.textContent =  `By ${chosenAuthor}`;
 }
+
+
 
 
 
@@ -236,7 +252,7 @@ function generateResult() {
         current = index;
         audio.src = songs[index].file;
         audio.play().catch(err => console.log("Autoplay prevented:", err));
-        playPauseBtn.textContent = '❚❚'
+        playPauseBtn.textContent = '⏸'
         updatePlaying();
         updateNowPlaying(songs[index].title);
     }
