@@ -182,7 +182,7 @@ h2 {
 
 body {
     background: linear-gradient(rgba(94, 84, 84, 0.55), rgba(8, 16, 14, 0.825)),
-    url('images/background.jpeg');
+    url('images/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
