@@ -15,106 +15,135 @@
     --cream:#f4ecd8;
     --holly: #3a7a5c;
     --holly-shade: #2c5f47;
-
 }
-
-
 
 /* ----------------------------------
-    MOBILE
+    WEBSITE BACKGROUND + TEXTS
     --------------------------------- */
 
-@media (max-width: 600px) {
+body {
+    background: linear-gradient(
+        rgba(94, 84, 84, 0.55), 
+        rgba(8, 16, 14, 0.825)),
 
-    .mobile-scale-wrap {
-        transform: scale(0.85);
-        transform-origin: top center;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
+    url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    cursor: url('images/cursor.png') 4 4, auto;
 
-    .app {
-        width: 92%;
-        padding: 32px 18px 24px;
-    }
-
-    h1 {
-        font-size: 32px;
-    }
-
-
-    .now-playing {
-        width: 170px;
-    }
-
-    .rope {
-        width: 130px;
-    }
-
-    .corner-sticker {
-        width: 100px;
-        bottom: -35px;
-        left: -35px;
-    }
-
-}
-
-@media (min-width: 601px) {
-    .app {
-        width:auto;
-        min-width: 480px;
-        max-width: 640px;
-    }
-    
-}
-
-
-/* -------------------------------
-    PROMPT SPACE
-    ------------------------------ */
-
-.prompt-container {
-    position: relative;
-    display: block;
-    margin: 10px 0 16px;
-    padding-top: 4px;
-}
-
-.prompt-container p {
+    min-height: 100vh;
     margin: 0;
-}
-
-
-/* -------------------------------
-    COPY BUTTON
-    ------------------------------ */
-
-.copy-btn {
-    position: absolute;
-    top: -55px;
-    right: 65px;
-    background: none;
-    border: none;
-    font-size: 25px;
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 6px;
-    transition: transform 0.15s ease, background 0.15s ease;
-}
-
-
-.copy-btn:hover {
-    transform: scale(1.15);
-    background: rgba(188, 155, 94, 0.2);
-}
-
-.copy-btn.copied {
-    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    line-height: 1.55;
+    color: #752a2a;
     font-family: var(--font-body);
-    text-transform: lowercase;
-    transform: scale(0.9);
 }
+
+
+button, a, 
+.chip, .credits-wrapper, 
+.now-playing, .song-item, 
+.copy-btn, .player-btn {
+
+    cursor: url('images/cursor.png') 4 4, pointer !important;
+}
+
+
+h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: #3a1010;
+    font-size: 50px;
+}
+
+
+h2 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a9762e;
+}
+
+
+.message {
+    margin: 0 0 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a9762e;
+}
+
+
+.subtitle {
+    margin: 0 0 32px;
+    max-width: 360px;
+    color: #6b5a3d;
+    font-size: 16px;
+    line-height: 1.55;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+/* ------------------------------------
+    THE CARD
+    ----------------------------------- */
+    
+.app {
+    position: relative;
+    bottom: 50px;
+    background: linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
+    border: 1px solid rgba(122, 92, 42, 0.35);
+    border-radius: 22px;
+    padding: 48px 40px 40px;
+    width: 90%;
+    max-width: 560px;
+    min-height: 200px;
+    text-align: center;
+    box-shadow: 
+        0 30px 60px -25px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    z-index: 0;
+}
+
+
+.punched-hole {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--night);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.4);
+    z-index: 4;
+}
+
+
+.corner-sticker {
+    position: absolute;
+    bottom: -85px;
+    left: -85px;
+    width: 200px;
+    height: auto;
+    pointer-events: none;
+}
+
+
+
+
 
 /* ----------------------------------
     WELCOME PAGE
@@ -136,7 +165,12 @@
 }
 
 .welcome-bg {
-    background-image: url('images/jolly.png'), linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
+    background-image: 
+    url('images/jolly.png'), 
+    linear-gradient(180deg, 
+    #f6ecd8 0%, 
+    #ecdbb4 100%);
+
     background-size: cover, cover;
     background-blend-mode: soft-light;
     border: 1px solid rgba(122, 92, 42, 0.35);
@@ -148,130 +182,168 @@
 }
 
 
-/* ----------------------------------
-    PAGE BACKGROUND & TEXT
-    --------------------------------- */
-
-.corner-sticker {
-    position: absolute;
-    bottom: -85px;
-    left: -85px;
-    width: 200px;
-    height: auto;
-    pointer-events: none;
-}
-
-h1 {
-    font-family: var(--font-display);
-    font-weight: 800;
-    color: #3a1010;
-    font-size: 50px;
-}
-
-h2 {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #a9762e;
-}
-
-
-
-
-body {
-    background: linear-gradient(rgba(94, 84, 84, 0.55), rgba(8, 16, 14, 0.825)),
-    url('images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    cursor: url('images/cursor.png') 4 4, auto;
-
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    line-height: 1.55;
-    color: #752a2a;
-    
-    font-family: var(--font-body);
-}
-
-button, a, 
-.chip, .credits-wrapper, 
-.now-playing, .song-item, 
-.copy-btn, .player-btn {
-
-    cursor: url('images/cursor.png') 4 4, pointer !important;
-
-}
-
-
-.message {
-    margin: 0 0 8px;
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #a9762e;
-}
-
-.subtitle {
-    margin: 0 0 32px;
-    max-width: 360px;
-    color: #6b5a3d;
-    font-size: 16px;
-    line-height: 1.55;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
 /* -------------------------------
-    CHIPS
+    PROMPT SPACE
     ------------------------------ */
-.chip,
+
+.prompt-container {
+    position: relative;
+    display: block;
+    margin: 10px 0 16px;
+    padding-top: 4px;
+}
+
+.prompt-container p {
+    margin: 0;
+}
+
+
+#result-author {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b5a3d;
+    margin-top: -10px;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
 #result-genre-label {
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 
 
+
+
+/* -------------------------------
+    COPY BUTTON
+    ------------------------------ */
+
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: -45px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+
+    box-sizing: border-box;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+
+    font-size: 25px;
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+
+.copy-btn:hover {
+    transform: scale(1.15);
+    background: rgba(188, 155, 94, 0.2);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+.copy-btn.copied {
+    font-size: 20px;
+    font-family: var(--font-body);
+    text-transform: lowercase;
+    transform: scale(0.9);
+}
+
+
+/* -------------------------------
+    CHIPS
+    ------------------------------ */
+
+
+.chip,
+
+#result-genre-label {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
 .chip {
-    background: var(--holly);
-    color: var(--cream);
-    border: 1px solid var(--gold);
-    border-radius: 20px;
-    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100px;
+    padding: 12px 8px;
     margin: 5px;
+
+    background: transparent;
+    color: var(--cream);
+
+    border: none;
+    border-radius: 20px;
+    
     font-family: var(--font-body);
     font-size: 14px;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 
 }
+
+
 
 .chip:hover {
-    background: var(--holly-shade);
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.04);
+    background: transparent;
 }
 
-/* -------------------------------
-    SNOW
-    ------------------------------ */
 
-#snow-canvas {
-    position: fixed;
-    inset: 0;
+
+
+/* ----------------------------------
+    ORNAMENT BUTTONS (So close to forgetting this bit)
+    --------------------------------- */
+
+#genre-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, auto);
+    gap: 16px;
+    justify-items: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
+    max-width: 280px;
+    margin: 20px auto 0;
 }
+
+
+
+.chip-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+
+
+.chip-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--berry);
+    text-align: center;
+    line-height: 1.2;
+}
+
 
 
 /* -------------------------------
@@ -287,8 +359,9 @@ button, a,
     padding: 15px 40px;
     cursor: pointer;
     border: 1px solid transparent;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, 
-    background 0.18s ease, opacity 0.18s ease;}
+    transition: 
+        transform 0.18s ease, box-shadow 0.18s ease, 
+        background 0.18s ease, opacity 0.18s ease;}
 
 
 .btn-main {
@@ -340,6 +413,7 @@ button, a,
     transform: translateY(-2px);
 }
 
+
 /* -------------------------------
     Hide and Show mechanics
     ------------------------------ */
@@ -355,10 +429,7 @@ button, a,
 
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+
 
 /* --------------------------------
     CREDITS
@@ -377,10 +448,10 @@ button, a,
 .credits-panel {
     display: none;
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 4px;
+    margin-bottom: 4px;
     width: 250px;
     background: var(--cream);
     border: 1px solid var(--cream);
@@ -400,146 +471,7 @@ button, a,
     display: block;
 }
 
-#result-author {
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    color: #6b5a3d;
-    margin-top: -10px;
-    margin-bottom: 24px;
-    font-style: italic;
-}
 
-/* -----------------------------------
-    HANGING ROPE
-    ---------------------------------- */
-
-.hanging-rope {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform-origin: top center;
-    animation: sway 8s ease-in-out infinite;
-    will-change: transform;
-    backface-visibility: hidden;
-
-}
-
-@keyframes sway {
-    0%, 100% {transform: rotate(-1deg);}
-    50% {transform: rotate(1deg);}
-}
-
-
-/* -------------- THE ACTUAL ROPE ------------- */
-
-.rope {
-    width: 240px;
-    bottom: -15.5px;
-    left: 2px;
-    height: auto;
-    display: block;
-    position: relative;
-    z-index: 5;
-    margin-bottom: -15.5px;
-    will-change: transform;
-    backface-visibility: hidden;
-
-}
-
-/* ----------------------------------
-    ORNAMENT BUTTONS (So close to forgetting this bit)
-    --------------------------------- */
-
-
-#genre-list {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-template-rows: repeat(2, auto);
-    gap: 16px;
-    justify-items: center;
-    align-items: center;
-    width: 100%;
-    max-width: 280px;
-    margin: 20px auto 0;
-}
-
-
-
-.chip {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100px;
-    padding: 12px 8px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.chip:hover {
-    transform: translateY(-4px) scale(1.04);
-    background: transparent;
-}
-
-.chip-icon {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-}
-
-
-
-.chip-label {
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--berry);
-    text-align: center;
-    line-height: 1.2;
-}
-
-
-/* ------------------------------------
-    THE CARD
-    ----------------------------------- */
-    
-.app {
-    position: relative;
-    bottom: 50px;
-    background: linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
-    border: 1px solid rgba(122, 92, 42, 0.35);
-    border-radius: 22px;
-    padding: 48px 40px 40px;
-    width: 90%;
-    max-width: 560px;
-    min-height: 200px;
-    text-align: center;
-    box-shadow: 
-    0 30px 60px -25px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    z-index: 0;
-}
-
-
-.punched-hole {
-    position: absolute;
-    top: 14px;
-    left: 50%;
-    transform: translate(-50%);
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--night);
-    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6),
-    0 1px 0 rgba(255, 255, 255, 0.4);
-    z-index: 4;
-}
 
 /* ----------------------------------
     MUSIC PLAYER
@@ -581,12 +513,6 @@ button, a,
     animation: marquee 8s linear infinite;
 }
 
-
-@keyframes marquee {
-    0% {transform: translateX(0);}
-    100% {transform: translateX(-50%);}
-    
-}
 
 
 .song-item {
@@ -678,5 +604,155 @@ button, a,
 .playlist.is-open {
     display: flex;
 }
+
+
+
+
+/* -----------------------------------
+    HANGING ROPE
+    ---------------------------------- */
+
+.hanging-rope {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    animation: sway 8s ease-in-out infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+
+}
+
+
+
+
+
+
+/* -------------- THE ACTUAL ROPE ------------- */
+
+.rope {
+    width: 240px;
+    bottom: -15.5px;
+    left: 2px;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 5;
+    margin-bottom: -15.5px;
+    will-change: transform;
+    backface-visibility: hidden;
+
+}
+
+
+
+/* -------------------------------
+    SNOW
+    ------------------------------ */
+
+#snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+
+/* -------------------------------
+    ANIMATIONS
+    ------------------------------ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-50%);}
+    
+}
+
+@keyframes sway {
+    0%, 100% {transform: rotate(-1deg);}
+    50% {transform: rotate(1deg);}
+}
+
+
+
+/* ----------------------------------
+    MOBILE
+    --------------------------------- */
+
+@media (max-width: 600px) {
+
+    .mobile-scale-wrap {
+        transform: scale(0.85);
+        transform-origin: top center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .app {
+        width: 92%;
+        padding: 32px 18px 24px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+
+    .now-playing {
+        width: 170px;
+    }
+
+    .rope {
+        width: 130px;
+    }
+
+    .corner-sticker {
+        width: 100px;
+        bottom: -35px;
+        left: -35px;
+    }
+
+}
+
+/* ----------------------------------
+    DESKTOP
+    --------------------------------- */
+
+
+@media (min-width: 601px) {
+    .app {
+        width:auto;
+        min-width: 480px;
+        max-width: 640px;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
