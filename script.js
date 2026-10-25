@@ -7,7 +7,9 @@ const stepStart = document.getElementById('step-start');
 const stepGenre = document.getElementById('step-genre');
 const btnTryAgain = document.getElementById('btn-try-again');
 const btnStartOver = document.getElementById('btn-start-over');
-const state = {prompts: {}, selectedGenre: null,};
+const stepResults = document.getElementById('step-results');
+
+const state = {prompts: {}, selectedGenre: null};
 
 
 btnStart.addEventListener('click', () => {
@@ -15,13 +17,11 @@ btnStart.addEventListener('click', () => {
     stepGenre.classList.add('is-active');
 });
 
-btnTryAgain.addEventListener('click', () => {
-    generateResult();
-});
+btnTryAgain.addEventListener('click', generateResult);
 
 btnStartOver.addEventListener('click', () => {
     state.selectedGenre = null;
-    document.getElementById('step-results').classList.remove('is-active');
+    stepResults.classList.remove('is-active');
     stepStart.classList.add('is-active');
 });
 
@@ -32,14 +32,15 @@ btnStartOver.addEventListener('click', () => {
 const btnCopy = document.getElementById('btn-copy');
 
 btnCopy.addEventListener('click', async () => {
-    const promptText = document.getElementById('result-prompt').textContent;
+    const resultPrompt = document.getElementById('result-prompt');
+    const promptText = resultPrompt.textContent.trim()
 
-    if (!promptText || promptText === 'prompt goes here') return;
+    if (!promptText) return;
 
     try {
         await navigator.clipboard.writeText(promptText);
 
-        btnCopy.textContent = '✓ Copied';
+        btnCopy.textContent = '✓';
         btnCopy.classList.add('copied');
 
         setTimeout(() => {
@@ -58,9 +59,9 @@ btnCopy.addEventListener('click', async () => {
 (function welcomeSign() {
     const overlay = document.getElementById('welcome-overlay');
     const closeBtn = document.getElementById('welcome-close');
-    const hasVistedOnce = localStorage.getItem('hasVisited');
+    const hasVisited = localStorage.getItem('hasVisited');
 
-    if (!hasVistedOnce) {
+    if (!hasVisited) {
         overlay.classList.add('is-visible');
     }
 
@@ -96,7 +97,7 @@ btnCopy.addEventListener('click', async () => {
             y: Math.random() * height,
             r: isFar ?  Math.random() * 1 + 0.4 : Math.random() * 2.4 + 1.4,
             speed: isFar ? Math.random() * 0.6 + 0.25 : Math.random() * 0.6 + 0.5,
-            opacity: isFar ? Math.random() * 0.3 + 0.15 : Math.random() * 0.4 + 0.5,
+            opacity: isFar ? Math.random() * 0.3 + 0.15 : Math.random() * 0.4 + 0.5,            
             };
         });
     }
@@ -104,7 +105,11 @@ btnCopy.addEventListener('click', async () => {
     function tick() {
         context.clearRect(0, 0, width, height);
         context.fillStyle = '#f4ecd8';
+        
         flakes.forEach((f) => {
+            context.globalAlpha = f.opacity;
+
+
             context.beginPath();
             context.arc(f.x, f.y, f.r, 0, Math.PI * 2);
             context.fill();
@@ -114,6 +119,8 @@ btnCopy.addEventListener('click', async () => {
                 f.x = Math.random() * width;
             }
         });
+        
+        context.globalAlpha = 1
         requestAnimationFrame(tick);
     }
 
@@ -148,14 +155,12 @@ function renderGenre(prompts) {
 
 
     const htmlInput = genres
-            .map((genre) => {
-                return`
+            .map((genre) =>  `
                     <button class="chip" data-genre="${genre}">
-                        <img src="${genreimages[genre]}" class="chip-icon">
+                        <img src="${genreimages[genre] || ''}" class="chip-icon" alt="">
                         <span class="chip-label">${genre}</span>             
-                    </button>`;
-            })
-                .join('');
+                    </button>`
+            ).join('');
 
     genreList.innerHTML = htmlInput
 
@@ -165,7 +170,7 @@ function renderGenre(prompts) {
             state.selectedGenre = chip.dataset.genre;
             generateResult();
             stepGenre.classList.remove('is-active');
-            document.getElementById('step-results').classList.add('is-active');
+            stepResults.classList.add('is-active');
     });
 });
 }
@@ -187,10 +192,15 @@ loadData();
 
 function generateResult() {
     const promptsForGenre = state.prompts[state.selectedGenre];
-    const authors = Object.keys(promptsForGenre);
-    const chosenAuthor = pickRandom(authors);
+    if (!promptsForGenre) return;
 
+    const authors = Object.keys(promptsForGenre);
+    if (authors.length === 0) return;
+
+    const chosenAuthor = pickRandom(authors);
     const prompts = promptsForGenre[chosenAuthor];
+    if (!Array.isArray(prompts) || prompts.length === 0) return;
+
     const chosenPrompt = pickRandom(prompts);
 
     
@@ -216,7 +226,7 @@ function generateResult() {
     const playPauseBtn = document.getElementById('play-pause-btn');
     const prevBtn = document.getElementById('btn-prev');
     const nextBtn = document.getElementById('btn-next');
-    const playlist1 = document.getElementById('playlist');
+    const playlist = document.getElementById('playlist');
     const audio = document.getElementById('audio-player');
     const nowPlayingBtn = document.getElementById('now-playing-btn')
 
@@ -232,32 +242,36 @@ function generateResult() {
             renderPlaylist();
             
 
-        } catch (e) {
-            console.error("Failed to load songs.json", e)
+        } catch (error) {
+            console.error("Failed to load songs.json", error)
         }
     }
 
     function renderPlaylist() {
-        playlist1.innerHTML = songs
+        playlist.innerHTML = songs
             .map((song, index) => `<button class="song-item" data-index="${index}">${song.title}</button>`)
             .join('')
 
-        playlist1.querySelectorAll('.song-item').forEach((btn) => {
+        playlist.querySelectorAll('.song-item').forEach((btn) => {
             btn.addEventListener('click', () => playSong(Number(btn.dataset.index)));
         });
     }
 
     function playSong(index) {
-        if (songs.length === 0) return;
+        if (songs.length === 0 || !songs[index]) return;
+
         current = index;
         audio.src = songs[index].file;
-        audio.play().catch(err => console.log("Autoplay prevented:", err));
-        playPauseBtn.textContent = '⏸'
+
+        audio.play().catch(err => console.log("Failed to play song:", err));
+
         updatePlaying();
         updateNowPlaying(songs[index].title);
     }
 
     function playNext() {
+        if (songs.length === 0) return;
+
         if (current === null) {
             playSong(0);
         } else {
@@ -276,29 +290,40 @@ function generateResult() {
         }
     }
 
+    function updatePlayPauseIcon() {
+        playPauseBtn.textContent = audio.paused ? '▶' : '⏸'
+    }
+
+    audio.addEventListener('play', updatePlayPauseIcon);
+    audio.addEventListener('pause', updatePlayPauseIcon);
+
 
 
 
     function updateNowPlaying(title) {
 
-        const track1 = document.getElementById('now-playing-track');
-        const mask1 = track1.parentElement;
+        const nowplayingtrack = document.getElementById('now-playing-track');
+        const nowplaylistmask = nowplayingtrack.parentElement;
 
-        track1.classList.remove('is-scrolling');
-        track1.textContent = `Now Playing: ${title}`;
+        nowplayingtrack.classList.remove('is-scrolling');
+        nowplayingtrack.textContent = `Now Playing: ${title}`;
 
-        const isOverflowing = track1.scrollWidth > mask1.clientWidth;
+        const isOverflowing = nowplayingtrack.scrollWidth > nowplaylistmask.clientWidth;
 
         if (isOverflowing) {
-            track1.textContent = `Now Playing: ${title}     •     Now Playing: ${title}`;
-            track1.classList.add('is-scrolling');
+            nowplayingtrack.textContent = `Now Playing: ${title}     •     Now Playing: ${title}`;
+            nowplayingtrack.classList.add('is-scrolling');
         }
-
     }
+
+    function togglePlaylist() {
+        playlist.classList.toggle('is-open');
+    }
+
 
     function updatePlaying() {
 
-        playlist1.querySelectorAll('.song-item').forEach((btn, i) => {
+        playlist.querySelectorAll('.song-item').forEach((btn, i) => {
             btn.classList.toggle('is-playing', i === current);
         });
 
@@ -306,24 +331,23 @@ function generateResult() {
 
     playPauseBtn.addEventListener('click', () => {
         if (current === null) {
-            playlist1.classList.toggle('is-open');
+            togglePlaylist();
             return;
         }
-        if (audio.paused) {
-            audio.play();
-            playPauseBtn.textContent = '❚❚' 
+        else if (audio.paused) {
+            audio.play().catch((error) => {
+                console.error('Failed to play song:', error)
+            });
+
         } else {
             audio.pause();
-            playPauseBtn.textContent = '▶'
         }
     });
 
     nextBtn.addEventListener('click', playNext);
     prevBtn.addEventListener('click', playPrev);
 
-    nowPlayingBtn.addEventListener('click', () => {
-        playlist1.classList.toggle('is-open');
-    });
+    nowPlayingBtn.addEventListener('click', togglePlaylist);
 
     audio.addEventListener('ended', playNext);
 
