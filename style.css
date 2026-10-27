@@ -37,7 +37,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 1.55;
     color: #752a2a;
     font-family: var(--font-body);
