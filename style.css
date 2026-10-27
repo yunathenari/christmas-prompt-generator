@@ -37,7 +37,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 1.55;
     color: #752a2a;
     font-family: var(--font-body);
@@ -55,7 +55,7 @@ button, a,
 
 h1 {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 300;
     color: #3a1010;
     font-size: 50px;
 }
