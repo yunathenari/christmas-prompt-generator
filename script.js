@@ -142,7 +142,7 @@ btnCopy.addEventListener('click', async () => {
 const genreimages = {
     "Angst": "images/angst.png",
     "Fluff": "images/fluff.png",
-    "Smut": "images/smut.png",
+    "Spice": "images/spice.png",
     "Hurt/Comfort": "images/hurt-comfort.png",
 };
 
