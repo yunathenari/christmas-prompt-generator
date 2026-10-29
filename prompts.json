@@ -891,7 +891,7 @@
       "\"Merry Christmas/Happy Holidays, love.\""
     ],
 
-    "promptcalender": [
+    "@promptcalender": [
       "\"You're half frozen! Just had to do a snowball fight before dinner, didn't you?\"",
       "\"The tree is gorgeous.\" \"Isn't it? You almost can't see where it caught on fire.\"",
       "\"If you fall asleep before the end of the movie, I will wrap you in fairy lights.\"",
@@ -1047,7 +1047,7 @@
       "\"Have you been a good [boy/girl]? Have you?\""
     ],
 
-    "promptcalender":[
+    "@promptcalender":[
       "kisses trailing up their thighs, hands gently pressing their knees apart",
       "A and B are newly together and going out for the first time. When B comes out in a little black number, A knows they won't get there on time.",
       "\"Baby, how do I look in this dress?\" \"Hm? Oh, you look fucking delicious.\" \"Hm, I don't know.\" twisting and turning \"Maybe I should-\" \"Love of my life, if you keep turning and posing like that in the mirror we will be late because I am not responsible for what happens when you wear red and you're wearing a whole lot of it right now.\" blushing \"Guess I'll go like this then.\" \"Mh, good.\" kiss \"Oh, and... Save some energy for when we get home.\"",
@@ -1063,7 +1063,7 @@
       "\"My hands are numb.\" \"I could think of a way or two to wake them up.\""
     ],
 
-    "writersisland": [
+    "@writersisland": [
       "\"Which one should I wear?\" \"Whichever one you're least attached to. I don't see myself having the patience to take it off slow later.\"",
       "\"You'll never be the same once I'm done with you.\"",
       "\"locking fingers without even thinking about it as soon as their hands accidentally brush\"",
@@ -1259,7 +1259,7 @@
       "\"What's the matter? What you crying for?\""
     ],
 
-    "promptcalender":[
+    "@promptcalender":[
       "\"Are you okay? C'mere, let me take a look at that.\"",
       "\"Can you make me hot cocoa?\" \"With whipped cream, marshmellows, and cinnamon?\" \"And Baileys.\" \"Ah, so it's that kinda day.\"",
       "\"Maybe I'd feel better if I had something sweet to snack on…\"",
@@ -1408,7 +1408,7 @@
         "\"What's the matter? What you crying for?\""
     ],
 
-    "promptcalender": [
+    "@promptcalender": [
     "\"Still think I'm flawless/beautiful?\"",
     "\"Never tell me that I don't know suffering again. You have no idea what I have been through.\"",
     "\"Do you understand now? Why I have to do this?\"",
