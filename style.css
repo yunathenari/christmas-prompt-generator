@@ -47,7 +47,7 @@ body {
 button, a, 
 .chip, .credits-wrapper, 
 .now-playing, .song-item, 
-.copy-btn, .player-btn {
+.copy-btn, .player-btn, .expand-btn {
 
     cursor: url('images/cursor.png') 4 4, pointer !important;
 }
@@ -602,9 +602,48 @@ h2 {
 
 .playlist.is-open {
     display: flex;
+    
 }
 
 
+.now-playing-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expand-btn {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    padding: 0;
+    border-radius: 16px;
+    border: 1px solid rgba(122, 92, 42, 0.35);
+    background: linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
+    box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.5);
+    color: var(--berry);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+}
+
+
+.expand-btn:hover {
+    transform: translateY(-2px);
+}
+
+.expand-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+.expand-btn.is-open .expand-arrow {
+    transform: rotate(90deg);
+}
 
 
 /* -----------------------------------
@@ -708,6 +747,11 @@ h2 {
 
     .now-playing {
         width: 170px;
+    }
+
+    .expand-btn {
+        width: 44px;
+        height: 44px;
     }
 
     .rope {
