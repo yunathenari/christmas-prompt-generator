@@ -509,7 +509,7 @@ h2 {
 }
 
 .now-playing-track.is-scrolling {
-    animation: marquee 8s linear infinite;
+    animation: marquee 9s linear infinite;
 }
 
 
