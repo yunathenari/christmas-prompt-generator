@@ -8,6 +8,7 @@ const stepGenre = document.getElementById('step-genre');
 const btnTryAgain = document.getElementById('btn-try-again');
 const btnStartOver = document.getElementById('btn-start-over');
 const stepResults = document.getElementById('step-results');
+const expandBtn = document.getElementById('expand-btn');
 
 const state = {prompts: {}, selectedGenre: null};
 
@@ -317,7 +318,9 @@ function generateResult() {
     }
 
     function togglePlaylist() {
-        playlist.classList.toggle('is-open');
+        const isOpen = playlist.classList.toggle('is-open');
+        expandBtn.classList.toggle('is-open', isOpen)
+        expandBtn.setAttribute('aria-expanded', isOpen)
     }
 
 
@@ -346,6 +349,7 @@ function generateResult() {
 
     nextBtn.addEventListener('click', playNext);
     prevBtn.addEventListener('click', playPrev);
+    expandBtn.addEventListener('click', togglePlaylist)
 
     nowPlayingBtn.addEventListener('click', togglePlaylist);
 
