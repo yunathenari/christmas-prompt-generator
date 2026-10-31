@@ -166,10 +166,9 @@ h2 {
 
 .welcome-bg {
     background-image: 
+    linear-gradient(rgba(246, 236, 216, 0.6), rgba(236, 219, 180, 0.6)),
     url('images/jolly.png'), 
-    linear-gradient(180deg, 
-    #f6ecd8 0%, 
-    #ecdbb4 100%);
+    linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
 
     background-size: cover, cover;
     border: 1px solid rgba(122, 92, 42, 0.35);
