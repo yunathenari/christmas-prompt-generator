@@ -8,8 +8,9 @@
 :root {
     --night: #441f1f;
     --font-display: "Henny Penny", system-ui;
-    --font-body: "Bellefair", serif;
     --font-credits: "Cabin", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-subtitle: "Mountains of Christmas", serif;
     --gold: #bc9b5e;
     --gold-light: #f0c975;
     --berry: #b23a45;
@@ -38,8 +39,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 570;
-    font-size: 18px;
+    font-weight: 500;
     line-height: 1.55;
     color: #752a2a;
     font-family: var(--font-body);
@@ -57,7 +57,7 @@ button, a,
 
 h1 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 800;
     color: #3a1010;
     font-size: 50px;
 }
@@ -86,6 +86,7 @@ h2 {
 
 .subtitle {
     margin: 0 0 32px;
+    font-family: var(--font-subtitle);
     max-width: 360px;
     color: #6b5a3d;
     font-size: 18px;
@@ -100,31 +101,29 @@ h2 {
 /* ------------------------------------
     THE CARD
     ----------------------------------- */
-    .app {
+    
+.app {
     position: relative;
     bottom: 50px;
-    background: linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
-    border: 1px solid rgba(122, 92, 42, 0.35);
-    border-radius: 12px;
-    padding: 48px 40px 40px;
+    background: none;
+    border: 40px solid transparent;
+    border-image: url('images/card.png') 80 fill / 40px stretch;
+    padding: 8px 0 0;
     width: 90%;
     max-width: 560px;
     min-height: 200px;
     text-align: center;
-    box-shadow: 
-        0 30px 60px -25px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    filter: drop-shadow(0 30px 30px rgba(0, 0, 0, 0.45));
     z-index: 0;
 }
 
-
 .punched-hole {
     position: absolute;
-    top: 14px;
+    top: -27px;
     left: 50%;
     transform: translate(-50%);
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: var(--night);
     box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6),
@@ -133,15 +132,15 @@ h2 {
 }
 
 
+
 .corner-sticker {
     position: absolute;
-    bottom: -85px;
-    left: -85px;
+    bottom: -125px;
+    left: -125px;
     width: 200px;
     height: auto;
     pointer-events: none;
 }
-
 
 
 
@@ -460,7 +459,6 @@ h2 {
     font-size: 14px;
     color: #4b5b52;
     z-index: 10;
-    font-family: var(--font-credits);
 
     user-select: text;
     -webkit-user-select: text;
@@ -470,8 +468,6 @@ h2 {
 .credits-wrapper:hover .credits-panel {
     display: block;
 }
-
-
 
 
 
@@ -673,7 +669,7 @@ h2 {
 
 .rope {
     width: 240px;
-    bottom: -13.5px;
+    bottom: -15.5px;
     left: 2px;
     height: auto;
     display: block;
@@ -759,15 +755,15 @@ h2 {
 
     .rope {
         width: 130px;
-        bottom: 9.2px;
+        bottom: 7.3px;
         margin-bottom: -8px;
         left: 1px;
     }
 
     .corner-sticker {
-        width: 150px;
-        bottom: -100px;
-        left: -100px;
+        width: 100px;
+        bottom: -35px;
+        left: -35px;
     }
 
 }
@@ -785,7 +781,6 @@ h2 {
     }
     
 }
-
 
 
 
