@@ -107,7 +107,7 @@ h2 {
     bottom: 50px;
     background: none;
     border: 40px solid transparent;
-    border-image: url('images/card.png') 80 fill / 40px stretch;
+    border-image: url('images/pcard.png') 80 fill / 40px stretch;
     padding: 8px 0 0;
     width: 90%;
     max-width: 560px;
