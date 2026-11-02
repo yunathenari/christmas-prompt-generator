@@ -100,8 +100,7 @@ h2 {
 /* ------------------------------------
     THE CARD
     ----------------------------------- */
-    
-.app {
+    .app {
     position: relative;
     bottom: 50px;
     background: linear-gradient(180deg, #f6ecd8 0%, #ecdbb4 100%);
@@ -142,7 +141,6 @@ h2 {
     height: auto;
     pointer-events: none;
 }
-
 
 
 
