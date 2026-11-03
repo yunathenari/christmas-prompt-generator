@@ -45,7 +45,7 @@ btnCopy.addEventListener('click', async () => {
         btnCopy.classList.add('copied');
 
         setTimeout(() => {
-            btnCopy.textContent = '🗎';
+            btnCopy.textContent = '📋';
             btnCopy.classList.remove('copied')
         }, 1500);
     } catch (err) {
